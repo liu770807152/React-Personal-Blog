@@ -1,33 +1,30 @@
 .header {
-	height: 3.2rem;
-	padding: 0.4rem;
+	height: auto;
+	padding: 0;
 	border-bottom: 1px solid #ccc;
 	background-color: #fff;
 	overflow: hidden;
 }
-
-.header__logo {
-	color: #047af0;
-	font-size: 1.4rem;
-	text-align: left;
+.header__title {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	height: 100%;
 }
-
+.header__logo {
+	margin-bottom: 0.4rem;
+	color: #047af0;
+	font-size: 1.6rem;
+}
 .header__text {
-	display: inline-block;
 	padding-left: 0.3rem;
+	margin-bottom: 0.4rem;
 	font-size: 0.8rem;
 	color: #999;
 }
-
 .menu-item__text {
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 }
-
-.ant-menu {
-	line-height: 2.8rem;
-}
-
-.ant-menu-item {
-	padding-left: 1rem;
-	padding-right: 1rem;
+.menu {
+	line-height: 2.6rem;
 }

@@ -1,6 +1,7 @@
 .bread__container {
 	padding: 0.5rem;
 	border-bottom: 1px solid #eee;
+	border-radius: 0.3rem;
 	background-color: #e1f0ff;
 }
 .list__title {
