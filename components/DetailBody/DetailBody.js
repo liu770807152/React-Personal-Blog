@@ -97,7 +97,7 @@ const DetailBody = () => (
 						</span>
 					</div>
 					<div className={styles.detail__content}>
-						<ReactMarkdown escapeHtml={false}>{markdown}</ReactMarkdown>
+						<ReactMarkdown>{markdown}</ReactMarkdown>
 					</div>
 				</div>
 			</div>
