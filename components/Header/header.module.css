@@ -1,5 +1,5 @@
 .header {
-	height: 2.8rem;
+	height: 3.2rem;
 	padding: 0.4rem;
 	border-bottom: 1px solid #ccc;
 	background-color: #fff;
@@ -7,7 +7,7 @@
 }
 
 .header__logo {
-	color: #1e90ff;
+	color: #047af0;
 	font-size: 1.4rem;
 	text-align: left;
 }
@@ -20,12 +20,11 @@
 }
 
 .menu-item__text {
-	margin-left: 1rem;
 	font-size: 0.8rem;
 }
 
 .ant-menu {
-	line-height: 2.6rem;
+	line-height: 2.8rem;
 }
 
 .ant-menu-item {

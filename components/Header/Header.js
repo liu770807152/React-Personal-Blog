@@ -10,7 +10,7 @@ import styles from './header.module.css';
 const Header = () => (
 	<div className={styles.header}>
 		<Row type='flex' justify='center'>
-			<Col xs={24} sm={24} md={10} lg={10} xl={10}>
+			<Col xs={24} sm={24} md={10} lg={16} xl={12}>
 				<span className={styles.header__logo}>Chris Blog</span>
 				<span className={styles.header__text}>Never settle.</span>
 			</Col>
