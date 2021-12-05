@@ -5,6 +5,7 @@ import {
 	FolderOpenOutlined,
 	FireOutlined,
 } from '@ant-design/icons';
+import Author from '../Author/Author';
 import styles from './body.module.css';
 
 const Body = () => {
@@ -32,15 +33,8 @@ const Body = () => {
 	]);
 
 	return (
-		<Row className={styles.comm__main} type='flex' justify='center'>
-			<Col
-				className={styles.comm__left}
-				xs={24}
-				sm={24}
-				md={16}
-				lg={18}
-				xl={14}
-			>
+		<Row className='comm__main' type='flex' justify='center'>
+			<Col className='comm__left' xs={24} sm={24} md={16} lg={18} xl={14}>
 				<List
 					header={<>Latest Blog</>}
 					itemLayout='vertical'
@@ -67,8 +61,8 @@ const Body = () => {
 					)}
 				/>
 			</Col>
-			<Col className={styles.comm__right} xs={0} sm={0} md={7} lg={5} xl={4}>
-				RIGHT
+			<Col className='comm__right' xs={0} sm={0} md={7} lg={5} xl={4}>
+				<Author />
 			</Col>
 		</Row>
 	);

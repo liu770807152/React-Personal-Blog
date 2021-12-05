@@ -6,12 +6,33 @@ body {
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	background-color: #f6f6f6;
 }
-
 a {
 	color: inherit;
 	text-decoration: none;
 }
-
 * {
 	box-sizing: border-box;
+}
+.comm__main {
+	margin-top: 0.5rem;
+}
+.comm__left {
+	background-color: #fff;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+	border: 1px solid #eee;
+}
+.comm__box {
+	background-color: #fff;
+	margin-left: 0.5rem;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+	border: 1px solid #eee;
+}
+.comm__right {
+	margin-left: 0.5rem;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+	border-bottom: 1px solid #eee;
+	background-color: #fff;
 }
