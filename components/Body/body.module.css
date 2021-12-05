@@ -1,18 +1,33 @@
 .comm__main {
 	margin-top: 0.5rem;
 }
-
 .comm__left {
 	padding: 0.3rem;
 	border-radius: 0.3rem;
 	border-bottom: 1px solid #eee;
 	background-color: #fff;
 }
-
 .comm__right {
 	margin-left: 0.5rem;
 	padding: 0.3rem;
 	border-radius: 0.3rem;
 	border-bottom: 1px solid #eee;
 	background-color: #fff;
+}
+.list__title {
+	font-size: 1.3rem;
+	color: #1e90ff;
+	padding: 0 0.5rem;
+}
+.list__context {
+	color: #777;
+	padding: 0.5rem;
+}
+.list__icon {
+	padding: 0.5rem 0;
+	color: #aaa;
+}
+.list__icon span {
+	display: inline-block;
+	padding: 0 0.3rem;
 }
