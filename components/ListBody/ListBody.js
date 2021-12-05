@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import Footer from '../Footer/Footer';
-import styles from './body.module.css';
+import styles from './listBody.module.css';
 
 const Body = () => {
 	const [myList, setMylist] = useState([
@@ -48,7 +48,7 @@ const Body = () => {
 						</Breadcrumb>
 					</div>
 					<List
-						header={<>Latest Blog</>}
+						header={<div className={styles.list__title}>Latest Blog</div>}
 						itemLayout='vertical'
 						dataSource={myList}
 						renderItem={(item) => (
@@ -57,7 +57,7 @@ const Body = () => {
 								<div className={styles.list__icon}>
 									<span>
 										<CalendarOutlined />
-										1970-1-1
+										1970-01-01
 									</span>
 									<span>
 										<FolderOpenOutlined />
@@ -68,7 +68,7 @@ const Body = () => {
 										1564
 									</span>
 								</div>
-								<div className={styles.list_context}>{item.context}</div>
+								<div className={styles.list__context}>{item.context}</div>
 							</List.Item>
 						)}
 					/>

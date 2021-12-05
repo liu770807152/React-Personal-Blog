@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header/Header';
-import Body from '../components/Body/Body';
+import DetailBody from '../components/DetailBody/DetailBody';
+import Footer from '../components/Footer/Footer';
 
 const Detail = () => (
 	<>
@@ -11,7 +12,8 @@ const Detail = () => (
 			<link rel='icon' href='/unlock-icon.svg' />
 		</Head>
 		<Header />
-		<Body />
+		<DetailBody />
+		<Footer />
 	</>
 );
 
