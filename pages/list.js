@@ -8,7 +8,7 @@ const List = () => (
 		<Head>
 			<title>Chris Blog List</title>
 			<meta name='description' content='next.js app' />
-			{/* <link rel='icon' href='/favicon.ico' /> */}
+			<link rel='icon' href='/unlock-icon.svg' />
 		</Head>
 		<Header />
 		<Body />

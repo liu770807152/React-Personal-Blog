@@ -17,15 +17,15 @@ const Header = () => (
 			<Col xs={0} sm={0} md={14} lg={8} xl={6}>
 				<Menu mode='horizontal'>
 					<Menu.Item key='home'>
-						<HomeOutlined />
+						<HomeOutlined style={{ fontSize: '1rem' }} />
 						<span className={styles['menu-item__text']}>HOME</span>
 					</Menu.Item>
 					<Menu.Item key='video'>
-						<YoutubeOutlined />
+						<YoutubeOutlined style={{ fontSize: '1rem' }} />
 						<span className={styles['menu-item__text']}>VIDEO</span>
 					</Menu.Item>
 					<Menu.Item key='life'>
-						<SmileOutlined />
+						<SmileOutlined style={{ fontSize: '1rem' }} />
 						<span className={styles['menu-item__text']}>LIFE</span>
 					</Menu.Item>
 				</Menu>

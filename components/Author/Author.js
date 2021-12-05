@@ -1,10 +1,16 @@
 import React from 'react';
 import { Avatar, Divider } from 'antd';
+import classNames from 'classnames';
 import styles from './author.module.css';
 
 const Author = () => {
 	return (
-		<div className={styles.author__container}>
+		<div
+			className={classNames({
+				[styles.author__container]: true,
+				comm__box: true,
+			})}
+		>
 			<div>
 				<Avatar size={100} src='/me.png' />
 			</div>
