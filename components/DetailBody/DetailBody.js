@@ -6,71 +6,48 @@ import {
   FolderOpenOutlined,
   FireOutlined
 } from '@ant-design/icons';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
-import ReactMarkdown from 'react-markdown';
-import MarkNavbar from 'markdown-navbar';
+import { marked } from 'marked';
+import hljs from 'highlight.js';
+import { last } from 'lodash';
+import Tocify from '../tocify.tsx';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
-import 'markdown-navbar/dist/navbar.css';
+import 'highlight.js/styles/monokai-sublime.css';
 import styles from './detailBody.module.css';
-
-// const markdown =
-// 	'# p01:Hello World\n' +
-// 	'[ **M** ] arkdown + E [ **ditor** ] = **Mditor**  \n' +
-// 	'> Mditor 是一个简洁、易于集成、方便扩展、期望舒服的编写 markdown 的编辑器，仅此而已... \n\n' +
-// 	'**这是加粗的文字**\n\n' +
-// 	'*这是倾斜的文字*`\n\n' +
-// 	'***这是斜体加粗的文字***\n\n' +
-// 	'~~这是加删除线的文字~~ \n\n' +
-// 	'`console.log(111)` \n\n' +
-// 	'# p02:Hello World\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n' +
-// 	'***\n\n\n' +
-// 	'# p03:Vue3.0\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'# p04:Hello World\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'#5 p05:Hello World\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'# p06:Vue3.0\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'# p07:Vue3.0\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'``` var a=11; ```\n' +
-// 	'# p08:Hello World\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'``` var a=11; ```\n' +
-// 	'# p09:Hello World\n' +
-// 	'> aaaaaaaaa\n' +
-// 	'>> bbbbbbbbb\n' +
-// 	'>>> cccccccccc\n\n' +
-// 	'``` var a=11; ```\n';
 
 const DetailBody = () => {
   const router = useRouter();
-  const [content, setContent] = useState('');
+  const tocify = new Tocify();
+  const renderer = new marked.Renderer();
+  const [content, setContent] = useState({ content: '' });
+
+  renderer.heading = function (text, level, raw) {
+    const anchor = tocify.add(text, level);
+    return `<a id="${anchor}" href="#${anchor}" class="anchor__fix"><h${level}>${text}</h${level}></a>\n`;
+  };
+
+  marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    pedantic: false, // allow error tolerance
+    sanitize: false, // don't remove anything
+    tables: true, // support Github table
+    breaks: false, // support Github line breaks
+    smartLists: true, // optimize list output
+    highlight: (code) => {
+      return hljs.highlightAuto(code).value;
+    }
+  });
 
   useEffect(async () => {
     const {
       data: { result }
     } = await axios(`http://127.0.0.1:7001/api/article/${router.query.id}`);
-    setContent(result[0].content);
+    console.log(result[0]);
+    setContent(result[0]); // transform to HTML
   }, []);
 
   return (
@@ -80,10 +57,10 @@ const DetailBody = () => {
           <div className={styles.bread__container}>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <Link href="/">Home</Link>
+                <NextLink href="/">Home</NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link href="/list">Video Tutorial</Link>
+                <NextLink href="/list">Video Tutorial</NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>Current</Breadcrumb.Item>
             </Breadcrumb>
@@ -98,20 +75,23 @@ const DetailBody = () => {
             >
               <span>
                 <CalendarOutlined />
-                1970-01-01
+                {content.time}
               </span>
               <span>
                 <FolderOpenOutlined />
-                Video Tutorial
+                {content.typeName}
               </span>
               <span>
                 <FireOutlined />
-                999
+                {content.viewCount}
               </span>
             </div>
-            <div className={styles.detail__content}>
-              <ReactMarkdown>{content}</ReactMarkdown>
-            </div>
+            <div
+              className={styles.detail__content}
+              dangerouslySetInnerHTML={{
+                __html: marked.parse(content.content)
+              }}
+            ></div>
           </div>
         </div>
       </Col>
@@ -126,12 +106,7 @@ const DetailBody = () => {
             })}
           >
             <div className={styles.nav__title}>Catalog</div>
-            <MarkNavbar
-              className={styles.article__menu}
-              source={content}
-              headingTopOffset={0}
-              ordered={false}
-            />
+            <div className="toc-list">{tocify && tocify.render()}</div>
           </div>
         </Affix>
       </Col>

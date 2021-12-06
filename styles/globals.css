@@ -1,12 +1,12 @@
 html,
 body {
-	padding: 0;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-	background-color: #f6f6f6;
-	font-size: 14px;
-	line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  line-height: 1.5;
 }
 h1,
 h2,
@@ -14,40 +14,32 @@ h3,
 h4,
 h5,
 h6 {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 * {
-	box-sizing: border-box;
-}
-code {
-	display: block;
-	padding: 0.5rem;
-	border: 0;
-	border-radius: 0.3rem;
-	color: white;
-	overflow-y: auto;
-	font-weight: 300;
-	font-family: Menlo, monospace;
-	background-color: #283646;
+  box-sizing: border-box;
 }
 .comm__main {
-	margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 .comm__left {
-	background-color: #fff;
-	border-radius: 0.3rem;
+  background-color: #fff;
+  border-radius: 0.3rem;
 }
 .comm__box {
-	padding: 0.3rem;
-	border-radius: 0.3rem;
-	border: 1px solid #eee;
-	background-color: #fff;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid #eee;
+  background-color: #fff;
 }
 .comm__right {
-	margin-left: 0.5rem;
-	border-radius: 0.3rem;
+  margin-left: 0.5rem;
+  border-radius: 0.3rem;
+}
+.ant-anchor-link-title {
+  overflow: visible;
 }
