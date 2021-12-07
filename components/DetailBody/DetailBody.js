@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Affix, Col, Row, Breadcrumb } from 'antd';
 import {
   CalendarOutlined,
@@ -7,19 +6,17 @@ import {
   FireOutlined
 } from '@ant-design/icons';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { last } from 'lodash';
-import Tocify from '../tocify.tsx';
+import Tocify from '../Tocify/tocify.tsx';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import 'highlight.js/styles/monokai-sublime.css';
 import styles from './detailBody.module.css';
+import { getArticleById } from '../../services/article';
 
 const DetailBody = () => {
-  const router = useRouter();
   const tocify = new Tocify();
   const renderer = new marked.Renderer();
   const [content, setContent] = useState({ content: '' });
@@ -45,8 +42,7 @@ const DetailBody = () => {
   useEffect(async () => {
     const {
       data: { result }
-    } = await axios(`http://127.0.0.1:7001/api/article/${router.query.id}`);
-    console.log(result[0]);
+    } = await getArticleById(1);
     setContent(result[0]); // transform to HTML
   }, []);
 

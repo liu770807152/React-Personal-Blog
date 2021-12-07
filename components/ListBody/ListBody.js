@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Col, Row, List, Breadcrumb } from 'antd';
 import {
   CalendarOutlined,
@@ -11,6 +10,7 @@ import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import Footer from '../Footer/Footer';
 import styles from './listBody.module.css';
+import { getArticleList } from '../../services/article';
 
 const Body = () => {
   const [myList, setList] = useState([]);
@@ -25,7 +25,7 @@ const Body = () => {
     //   });
     const {
       data: { result }
-    } = await axios('http://127.0.0.1:7001/api/articleList');
+    } = await getArticleList();
     setList(result);
   }, []);
 
