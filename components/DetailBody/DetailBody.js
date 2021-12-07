@@ -6,6 +6,7 @@ import {
   FireOutlined
 } from '@ant-design/icons';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
@@ -15,9 +16,11 @@ import Ad from '../Ad/Ad';
 import 'highlight.js/styles/monokai-sublime.css';
 import styles from './detailBody.module.css';
 import { getArticleById } from '../../services/article';
+import { getVideoById } from '../../services/video';
 
 const DetailBody = () => {
   const tocify = new Tocify();
+  const router = useRouter();
   const renderer = new marked.Renderer();
   const [content, setContent] = useState({ content: '' });
 
@@ -42,8 +45,13 @@ const DetailBody = () => {
   useEffect(async () => {
     const {
       data: { result }
-    } = await getArticleById(1);
-    setContent(result[0]); // transform to HTML
+    } =
+      router.query.catalog === 'article'
+        ? await getArticleById(router.query.id)
+        : await getVideoById(router.query.id);
+    // TODO: put it in localStorage
+
+    setContent(result[0]);
   }, []);
 
   return (
@@ -56,7 +64,13 @@ const DetailBody = () => {
                 <NextLink href="/">Home</NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <NextLink href="/list">Video Tutorial</NextLink>
+                <NextLink
+                  href={`/${router.query.catalog}?catalog=${router.query.catalog}`}
+                >
+                  {router.query.catalog === 'article'
+                    ? 'Article List'
+                    : 'Video List'}
+                </NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>Current</Breadcrumb.Item>
             </Breadcrumb>
@@ -75,7 +89,7 @@ const DetailBody = () => {
               </span>
               <span>
                 <FolderOpenOutlined />
-                {content.typeName}
+                {content.catalogName}
               </span>
               <span>
                 <FireOutlined />
@@ -85,7 +99,7 @@ const DetailBody = () => {
             <div
               className={styles.detail__content}
               dangerouslySetInnerHTML={{
-                __html: marked.parse(content.content)
+                __html: marked.parse(content.content) // transform to HTML
               }}
             ></div>
           </div>

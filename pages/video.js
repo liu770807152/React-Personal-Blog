@@ -4,15 +4,15 @@ import Header from '../components/Header/Header';
 import ListBody from '../components/ListBody/ListBody';
 
 const List = () => (
-	<>
-		<Head>
-			<title>Chris Blog List</title>
-			<meta name='description' content='next.js app' />
-			<link rel='icon' href='/unlock-icon.svg' />
-		</Head>
-		<Header />
-		<ListBody />
-	</>
+  <>
+    <Head>
+      <title>Video List</title>
+      <meta name="description" content="next.js app" />
+      <link rel="icon" href="/unlock-icon.svg" />
+    </Head>
+    <Header />
+    <ListBody />
+  </>
 );
 
 export default List;

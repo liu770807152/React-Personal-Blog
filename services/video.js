@@ -1,16 +1,16 @@
 import request from '../utils/request';
 import path from '../utils/apiUrl';
 
-export async function getArticleList() {
+export async function getVideoList() {
   return request({
     method: 'GET',
-    url: path.articleList
+    url: path.videoList
   });
 }
 
-export async function getArticleById(payload) {
+export async function getVideoById(payload) {
   return request({
     method: 'GET',
-    url: `${path.article}/${payload}`
+    url: `${path.video}/${payload}`
   });
 }

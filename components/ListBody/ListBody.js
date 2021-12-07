@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, List, Breadcrumb } from 'antd';
+import { useRouter } from 'next/router';
 import {
   CalendarOutlined,
   FolderOpenOutlined,
@@ -11,22 +12,22 @@ import Ad from '../Ad/Ad';
 import Footer from '../Footer/Footer';
 import styles from './listBody.module.css';
 import { getArticleList } from '../../services/article';
+import { getVideoList } from '../../services/video';
 
 const Body = () => {
-  const [myList, setList] = useState([]);
+  const router = useRouter();
+  const [itemList, setItemList] = useState([]);
 
   useEffect(async () => {
-    // axios('http://127.0.0.1:7001/default/articleList')
-    //   .then((data) => {
-    //     setList(data.data);
-    //   })
-    //   .catch((reason) => {
-    //     console.error(reason);
-    //   });
     const {
       data: { result }
-    } = await getArticleList();
-    setList(result);
+    } =
+      router.query.catalog === 'article' || !router.query.catalog
+        ? await getArticleList()
+        : await getVideoList();
+    // TODO: put it in localStorage
+
+    setItemList(result);
   }, []);
 
   return (
@@ -38,17 +39,26 @@ const Body = () => {
               <Breadcrumb.Item>
                 <Link href={{ pathname: '/' }}>Home</Link>
               </Breadcrumb.Item>
-              <Breadcrumb.Item>Video Tutorial</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                {router.query.catalog === 'article'
+                  ? 'Article List'
+                  : 'Video List'}
+              </Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <List
             header={<div className={styles.list__title}>Blog List</div>}
             itemLayout="vertical"
-            dataSource={myList}
+            dataSource={itemList}
             renderItem={(item) => (
               <List.Item>
                 <div className={styles.list__title}>
-                  <Link href={{ pathname: '/detail', query: { id: item.id } }}>
+                  <Link
+                    href={{
+                      pathname: '/detail',
+                      query: { id: item.id, catalog: router.query.catalog }
+                    }}
+                  >
                     {item.title}
                   </Link>
                 </div>
@@ -59,7 +69,7 @@ const Body = () => {
                   </span>
                   <span>
                     <FolderOpenOutlined />
-                    {item.typeName}
+                    {item.catalogName}
                   </span>
                   <span>
                     <FireOutlined />
