@@ -7,9 +7,9 @@ pre {
   font-family: Menlo, monospace;
   overflow-y: auto;
 }
-pre {
+/* pre {
   background-color: #283646 !important;
-}
+} */
 pre > code {
   border: 0px !important;
   background-color: #283646 !important;
