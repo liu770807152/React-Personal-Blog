@@ -18,16 +18,17 @@ const Body = () => {
   const router = useRouter();
   const [itemList, setItemList] = useState([]);
 
-  useEffect(async () => {
-    const {
-      data: { result }
-    } =
-      router.query.catalog === 'article' || !router.query.catalog
-        ? await getArticleList()
-        : await getVideoList();
-    // TODO: put it in localStorage
-
-    setItemList(result);
+  useEffect(() => {
+    async function setList() {
+      const {
+        data: { result }
+      } =
+        router.query.catalog === 'article' || !router.query.catalog
+          ? await getArticleList()
+          : await getVideoList();
+      setItemList(result);
+    }
+    setList();
   }, []);
 
   return (

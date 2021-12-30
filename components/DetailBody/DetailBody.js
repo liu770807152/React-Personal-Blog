@@ -42,16 +42,17 @@ const DetailBody = () => {
     }
   });
 
-  useEffect(async () => {
-    const {
-      data: { result }
-    } =
-      router.query.catalog === 'article'
-        ? await getArticleById(router.query.id)
-        : await getVideoById(router.query.id);
-    // TODO: put it in localStorage
-
-    setContent(result[0]);
+  useEffect(() => {
+    async function fetchContent() {
+      const {
+        data: { result }
+      } =
+        router.query.catalog === 'article'
+          ? await getArticleById(router.query.id)
+          : await getVideoById(router.query.id);
+      setContent(result[0]);
+    }
+    fetchContent();
   }, []);
 
   return (
