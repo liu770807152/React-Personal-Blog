@@ -43,7 +43,7 @@ const DetailBody = () => {
   });
 
   useEffect(() => {
-    async function fetchContent() {
+    (async () => {
       const {
         data: { result }
       } =
@@ -51,8 +51,7 @@ const DetailBody = () => {
           ? await getArticleById(router.query.id)
           : await getVideoById(router.query.id);
       setContent(result[0]);
-    }
-    fetchContent();
+    })();
   }, []);
 
   return (

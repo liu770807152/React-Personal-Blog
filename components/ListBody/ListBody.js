@@ -19,7 +19,7 @@ const Body = () => {
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
-    async function setList() {
+    (async () => {
       const {
         data: { result }
       } =
@@ -27,8 +27,7 @@ const Body = () => {
           ? await getArticleList()
           : await getVideoList();
       setItemList(result);
-    }
-    setList();
+    })();
   }, []);
 
   return (
