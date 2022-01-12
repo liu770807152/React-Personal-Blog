@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import Footer from '../Footer/Footer';
-import styles from './listBody.module.css';
+import styles from './listBody.module.scss';
 import { getArticleList } from '../../services/article';
 import { getVideoList } from '../../services/video';
 

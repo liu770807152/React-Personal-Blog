@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
-import styles from './ad.module.css';
+import styles from './ad.module.scss';
 
 const Ad = () => (
   <div

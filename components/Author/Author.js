@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Divider } from 'antd';
 import classNames from 'classnames';
-import styles from './author.module.css';
+import styles from './author.module.scss';
 
 const Author = () => {
   return (

@@ -14,7 +14,7 @@ import Tocify from '../Tocify/tocify.tsx';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import 'highlight.js/styles/monokai-sublime.css';
-import styles from './detailBody.module.css';
+import styles from './detailBody.module.scss';
 import { getArticleById } from '../../services/article';
 import { getVideoById } from '../../services/video';
 

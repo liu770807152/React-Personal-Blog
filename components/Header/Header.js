@@ -6,7 +6,7 @@ import {
   ProfileOutlined,
   SmileOutlined
 } from '@ant-design/icons';
-import styles from './header.module.css';
+import styles from './header.module.scss';
 import { getCatalogList } from '../../services/menu';
 
 export default class Header extends PureComponent {
