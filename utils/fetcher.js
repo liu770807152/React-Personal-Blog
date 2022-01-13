@@ -93,7 +93,7 @@ axiosInstance.interceptors.response.use(
  * @param  {object} [option] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(options) {
+export default function fetcher(options) {
   return axiosInstance(options)
     .then((response) => response)
     .catch((error) => error);

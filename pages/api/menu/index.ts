@@ -1,4 +1,4 @@
-import request from '../../../utils/request';
+import request from '../../../utils/fetcher';
 import path from '../../../utils/apiUrl';
 
 export async function handler() {
