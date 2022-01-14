@@ -3,12 +3,6 @@
 	"plugins":[
 		"inline-react-svg",
 		[
-			"styled-components",
-			{
-				"displayName": true,
-				"preprocess": false,
-				"ssr": true
-			},
 			//增加新的插件，这个插件就是让antd可以按需引入，包括CSS
 			"import",
 			{
