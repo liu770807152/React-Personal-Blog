@@ -95,6 +95,6 @@ axiosInstance.interceptors.response.use(
  */
 export default function fetcher(options) {
   return axiosInstance(options)
-    .then((response) => response)
+    .then((response) => response.data)
     .catch((error) => error);
 }

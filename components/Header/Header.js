@@ -7,25 +7,8 @@ import {
   SmileOutlined
 } from '@ant-design/icons';
 import styles from './header.module.scss';
-import { getCatalogList } from '../../services/menu';
 
 export default class Header extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { catalogList: [] };
-  }
-
-  componentDidMount() {
-    (async () => {
-      const {
-        data: { result }
-      } = await getCatalogList();
-      this.setState({
-        catalogList: result
-      });
-    })();
-  }
-
   handleClick = (e) => {
     if (e.key === '1') {
       Router.push({
@@ -36,11 +19,6 @@ export default class Header extends PureComponent {
         pathname: '/article',
         query: { catalog: 'article' }
       });
-    } else if (e.key === '3') {
-      Router.push({
-        pathname: '/video',
-        query: { catalog: 'video' }
-      });
     } else {
       Router.push({
         pathname: '/life'
@@ -49,7 +27,8 @@ export default class Header extends PureComponent {
   };
 
   render() {
-    const { catalogList } = this.state;
+    const { catalog } = this.props;
+
     return (
       <div className={styles.header}>
         <Row type="flex" justify="center">
@@ -65,7 +44,7 @@ export default class Header extends PureComponent {
               className={styles.menu}
               onClick={this.handleClick}
             >
-              {catalogList.map((item) => (
+              {catalog.map((item) => (
                 <Menu.Item key={item.id}>
                   {item.icon === 'HomeOutlined' ? (
                     <HomeOutlined style={{ fontSize: '1.2rem' }} />
