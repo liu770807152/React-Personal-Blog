@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Affix, Col, Row, Breadcrumb } from 'antd';
 import {
   CalendarOutlined,
@@ -6,23 +6,21 @@ import {
   FireOutlined
 } from '@ant-design/icons';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import Tocify from '../Tocify/tocify.tsx';
-import Author from '../Author/Author';
-import Ad from '../Ad/Ad';
+import Tocify from '../../utils/tocify.tsx';
+import Author from '../Author';
+import Ad from '../Ad';
 import 'highlight.js/styles/monokai-sublime.css';
 import styles from './detailBody.module.scss';
-import { getArticleById } from '../../services/article';
-import { getVideoById } from '../../services/video';
+import useSWR from 'swr';
 
-const DetailBody = () => {
+const DetailBody = ({ id }) => {
+  const { data, error } = useSWR(`/api/article/${id}`);
   const tocify = new Tocify();
-  const router = useRouter();
   const renderer = new marked.Renderer();
-  const [content, setContent] = useState({ content: '' });
+  // const [content, setContent] = useState({ content: '' });
 
   renderer.heading = function (text, level, raw) {
     const anchor = tocify.add(text, level);
@@ -42,18 +40,8 @@ const DetailBody = () => {
     }
   });
 
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { result }
-      } =
-        router.query.catalog === 'article'
-          ? await getArticleById(router.query.id)
-          : await getVideoById(router.query.id);
-      setContent(result[0]);
-    })();
-  }, []);
-
+  if (error) return 'An error has occurred.';
+  if (!data) return 'Loading...';
   return (
     <Row className="comm__main" type="flex" justify="center">
       <Col className="comm__left" xs={24} sm={24} md={16} lg={18} xl={14}>
@@ -64,13 +52,7 @@ const DetailBody = () => {
                 <NextLink href="/">Home</NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <NextLink
-                  href={`/${router.query.catalog}?catalog=${router.query.catalog}`}
-                >
-                  {router.query.catalog === 'article'
-                    ? 'Article List'
-                    : 'Video List'}
-                </NextLink>
+                <NextLink href={`/article`}>{'Article List'}</NextLink>
               </Breadcrumb.Item>
               <Breadcrumb.Item>Current</Breadcrumb.Item>
             </Breadcrumb>
@@ -85,21 +67,21 @@ const DetailBody = () => {
             >
               <span>
                 <CalendarOutlined />
-                {content.time}
+                {data.time}
               </span>
               <span>
                 <FolderOpenOutlined />
-                {content.catalogName}
+                {data.catalogName}
               </span>
               <span>
                 <FireOutlined />
-                {content.viewCount}
+                {data.viewCount}
               </span>
             </div>
             <div
               className={styles.detail__content}
               dangerouslySetInnerHTML={{
-                __html: marked.parse(content.content) // transform to HTML
+                __html: marked.parse(data.content) // transform to HTML
               }}
             ></div>
           </div>

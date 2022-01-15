@@ -1,20 +1,18 @@
 import React from 'react';
-import Header from '../components/Header/Header';
-import Meta from '../components/Meta/Meta';
-import fetcher from '../utils/fetcher';
+import Meta from '../components/Meta';
+import { SWRConfig } from 'swr';
 
-const Home = ({ catalog }) => (
+const Home = () => (
   <>
     <Meta />
-    <Header catalog={catalog} />
   </>
 );
 
-export const getStaticProps = async () => {
-  const catalogList = await fetcher(`/api/catalogList`);
-  return {
-    props: { catalog: catalogList }
-  };
-};
+// export const getStaticProps = async () => {
+//   const catalogList = await fetcher(`/api/catalogList`);
+//   return {
+//     props: { catalog: catalogList }
+//   };
+// };
 
 export default Home;

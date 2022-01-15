@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Col, Row, List, Breadcrumb } from 'antd';
-import { useRouter } from 'next/router';
 import {
   CalendarOutlined,
   FolderOpenOutlined,
   FireOutlined
 } from '@ant-design/icons';
 import Link from 'next/link';
-import Author from '../Author/Author';
-import Ad from '../Ad/Ad';
-import Footer from '../Footer/Footer';
+import Author from '../Author';
+import Ad from '../Ad';
+import Footer from '../Footer';
 import styles from './listBody.module.scss';
-import { getArticleList } from '../../services/article';
-import { getVideoList } from '../../services/video';
+import useSWR from 'swr';
 
 const Body = () => {
-  const router = useRouter();
-  const [itemList, setItemList] = useState([]);
+  const { data, error } = useSWR('/api/articleList');
 
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { result }
-      } =
-        router.query.catalog === 'article' || !router.query.catalog
-          ? await getArticleList()
-          : await getVideoList();
-      setItemList(result);
-    })();
-  }, []);
-
+  if (error) return 'An error has occurred.';
+  if (!data) return 'Loading...';
   return (
     <>
       <Row className="comm__main" type="flex" justify="center">
@@ -39,24 +26,20 @@ const Body = () => {
               <Breadcrumb.Item>
                 <Link href={{ pathname: '/' }}>Home</Link>
               </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                {router.query.catalog === 'article'
-                  ? 'Article List'
-                  : 'Video List'}
-              </Breadcrumb.Item>
+              <Breadcrumb.Item>{'Article List'}</Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <List
             header={<div className={styles.list__title}>Blog List</div>}
             itemLayout="vertical"
-            dataSource={itemList}
+            dataSource={data}
             renderItem={(item) => (
               <List.Item>
                 <div className={styles.list__title}>
                   <Link
                     href={{
-                      pathname: '/detail',
-                      query: { id: item.id, catalog: router.query.catalog }
+                      pathname: '/article/[id]',
+                      query: { id: item.id }
                     }}
                   >
                     {item.title}
