@@ -1,22 +1,27 @@
 import React from 'react';
 import { Col, Row, List, Breadcrumb } from 'antd';
-import {
-  CalendarOutlined,
-  FolderOpenOutlined,
-  FireOutlined
-} from '@ant-design/icons';
 import Link from 'next/link';
-import Author from '../Author';
-import Ad from '../Ad';
-import Footer from '../Footer';
+import Author from '../Author/Author';
+import Ad from '../Ad/Ad';
+import DynamicIcon from '../DynamicIcon/DynamicIcon';
 import styles from './listBody.module.scss';
 import useSWR from 'swr';
+import { IArticleList, IArticleBase } from '../../interfaces/article';
 
-const Body = () => {
+export interface ListBodyProps {
+  data: IArticleList
+}
+
+const Body: React.FC<ListBodyProps> = () => {
   const { data, error } = useSWR('/api/articleList');
+  const icons = [
+    ['CalendarOutlined', 'px-1'],
+    ['FolderOpenOutlined', 'px-1'],
+    ['FireOutlined', 'px-1']
+  ];
 
-  if (error) return 'An error has occurred.';
-  if (!data) return 'Loading...';
+  if (error) return <h1>An error has occurred.</h1>;
+  if (!data) return <h1>Loading...</h1>;
   return (
     <>
       <Row className="comm__main" type="flex" justify="center">
@@ -33,7 +38,7 @@ const Body = () => {
             header={<div className={styles.list__title}>Blog List</div>}
             itemLayout="vertical"
             dataSource={data}
-            renderItem={(item) => (
+            renderItem={(item: IArticleBase) => (
               <List.Item>
                 <div className={styles.list__title}>
                   <Link
@@ -45,19 +50,19 @@ const Body = () => {
                     {item.title}
                   </Link>
                 </div>
-                <div className={styles.list__icon}>
-                  <span>
-                    <CalendarOutlined />
-                    {item.time}
-                  </span>
-                  <span>
-                    <FolderOpenOutlined />
-                    {item.catalogName}
-                  </span>
-                  <span>
-                    <FireOutlined />
-                    {item.viewCount}
-                  </span>
+                <div className="icon-list">
+                  {icons.map((icon, index) => (
+                    <span className="icon-list__icon">
+                      <DynamicIcon type={icon[0]} style={icon[1]} />
+                      <span>
+                        {index === 0
+                          ? item.time
+                          : index === 1
+                          ? item.catalogName
+                          : item.viewCount}
+                      </span>
+                    </span>
+                  ))}
                 </div>
                 <div className={styles.list__context}>{item.introduction}</div>
               </List.Item>
@@ -69,7 +74,6 @@ const Body = () => {
           <Ad />
         </Col>
       </Row>
-      <Footer />
     </>
   );
 };

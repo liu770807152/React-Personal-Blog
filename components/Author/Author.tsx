@@ -3,7 +3,7 @@ import { Avatar, Divider } from 'antd';
 import classNames from 'classnames';
 import styles from './author.module.scss';
 
-const Author = () => (
+const Author: React.FC = () => (
   <div
     className={classNames({
       [styles.author__container]: true,

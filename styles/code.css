@@ -1,18 +1,18 @@
 pre {
   display: block;
-  padding: 0.5rem !important;
+  padding: 0.5rem;
   border-radius: 0.3rem;
   background-color: #f3f3f3;
   font-weight: 300;
   font-family: Menlo, monospace;
   overflow-y: auto;
 }
-/* pre {
-  background-color: #283646 !important;
-} */
+pre {
+  background-color: #283646;
+}
 pre > code {
-  border: 0px !important;
-  background-color: #283646 !important;
+  border: 0px;
+  background-color: #283646;
   color: #fff;
 }
 code {
@@ -71,4 +71,11 @@ img {
 }
 iframe {
   height: 34rem;
+}
+blockquote {
+  display: block;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
 }

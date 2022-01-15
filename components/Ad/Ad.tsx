@@ -3,7 +3,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './ad.module.scss';
 
-const Ad = () => (
+const Ad: React.FC = () => (
   <div
     className={classNames({ [styles.ad__container]: true, comm__box: true })}
   >

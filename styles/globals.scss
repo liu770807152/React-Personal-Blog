@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67__qem;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+:-webkit-any(article, aside, nav, section) h1 {
+  font-size: 1.5em;
+  margin-block-start: 0.83__qem;
+  margin-block-end: 0.83em;
+}
+:-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  h1 {
+  font-size: 1.17em;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+}
+:-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  h1 {
+  font-size: 1em;
+  margin-block-start: 1.33__qem;
+  margin-block-end: 1.33em;
+}
+:-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  h1 {
+  font-size: 0.83em;
+  margin-block-start: 1.67__qem;
+  margin-block-end: 1.67em;
+}
+:-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  :-webkit-any(article, aside, nav, section)
+  h1 {
+  font-size: 0.67em;
+  margin-block-start: 2.33__qem;
+  margin-block-end: 2.33em;
+}
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83__qem;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+h4 {
+  display: block;
+  margin-block-start: 1.33__qem;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+h5 {
+  display: block;
+  font-size: 0.83em;
+  margin-block-start: 1.67__qem;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+h6 {
+  display: block;
+  font-size: 0.67em;
+  margin-block-start: 2.33__qem;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+menu,
+dir {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 40px;
+}
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 40px;
+}
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+ul ul,
+ol ul {
+  list-style-type: circle;
+}
+ol ol ul,
+ol ul ul,
+ul ol ul,
+ul ul ul {
+  list-style-type: square;
+}
+dd {
+  display: block;
+  margin-inline-start: 40px;
+}
+dl {
+  display: block;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+dt {
+  display: block;
+}
+ol ul,
+ul ol,
+ul ul,
+ol ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+.comm {
+  &__main {
+    margin-top: 0.5rem;
+  }
+  &__left {
+    background-color: #fff;
+    border-radius: 0.3rem;
+  }
+  &__right {
+    margin-left: 0.5rem;
+    border-radius: 0.3rem;
+  }
+  &__box {
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    border: 1px solid #eee;
+    background-color: #fff;
+  }
+}
+.ant-anchor-link-title {
+  overflow: visible;
+}
+.icon-list {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  color: #aaa;
+  &__icon {
+    display: flex;
+    align-items: center;
+    padding: 0 0.4rem;
+  }
+}

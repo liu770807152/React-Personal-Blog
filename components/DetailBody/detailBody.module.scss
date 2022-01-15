@@ -1,47 +1,51 @@
 .active {
-	color: rgb(30, 144, 255) !important;
+  color: rgb(30, 144, 255) !important;
 }
 .bread__container {
-	padding: 0.5rem;
-	border-bottom: 1px solid #eee;
-	border-radius: 0.3rem;
-	background-color: #e1f0ff;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  border-radius: 0.3rem;
+  background-color: #e1f0ff;
 }
 .center {
-	text-align: center;
+  text-align: center;
 }
 .detail__wrapper {
-	padding: 0.3rem;
+  padding: 0.3rem;
 }
 .detail__title {
-	text-align: center;
-	padding: 1rem;
+  text-align: center;
+  padding: 1rem;
 }
 .detail__content {
-	padding: 1.3rem;
-	font-size: 1rem;
+  padding: 1.3rem;
+  font-size: 1rem;
 }
 .nav__title {
-	padding-bottom: 10px;
-	border-bottom: 1px solid #1890ff;
-	text-align: center;
-	color: #1890ff;
-	font-size: 1.4rem;
-}
-.list__icon {
-	padding: 0.5rem 0;
-	color: #aaa;
-}
-.list__icon span {
-	display: inline-block;
-	padding: 0 0.3rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1890ff;
+  text-align: center;
+  color: #1890ff;
+  font-size: 1.4rem;
 }
 .title__anchor {
-	color: #888 !important;
-	padding: 4px !important;
-	margin: 0rem !important;
-	height: auto !important;
-	line-height: 1.2rem !important;
-	font-size: 0.9rem !important;
-	border-bottom: 1px dashed #eee;
+  color: #888 !important;
+  padding: 4px !important;
+  margin: 0rem !important;
+  height: auto !important;
+  line-height: 1.2rem !important;
+  font-size: 0.9rem !important;
+  border-bottom: 1px dashed #eee;
+}
+.list__icon-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5rem 0;
+  color: #aaa;
+  &--icon {
+    display: flex;
+    align-items: center;
+    padding: 0 0.4rem;
+  }
 }
