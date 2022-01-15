@@ -7,6 +7,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "allowSyntheticDefaultImports": true, // 允许从没有默认导出的模块中进行默认导入
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
@@ -17,7 +18,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "react",
+    "sourceMap": true, // 生成相应的.map文件
+    "declaration": true, // 生成相应的.d.ts文件
+    "noUnusedLocals": true, // 报告未使用的局部变量的错误
+    "noUnusedParameters": true, // 报告未使用参数的错误
+    "noFallthroughCasesInSwitch": true // 报告switch语句中不可命中情况的错误
   },
   "include": [
     "next-env.d.ts",
