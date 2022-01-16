@@ -4,6 +4,9 @@ import Link from 'next/link';
 import Author from '../Author/Author';
 import Ad from '../Ad/Ad';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
+import { marked } from 'marked';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/monokai-sublime.css';
 import styles from './listBody.module.scss';
 import useSWR from 'swr';
 import { IArticleList, IArticleBase } from '../../interfaces/article';
@@ -19,6 +22,20 @@ const Body: React.FC<ListBodyProps> = () => {
     ['FolderOpenOutlined', 'px-1'],
     ['FireOutlined', 'px-1']
   ];
+  const renderer = new marked.Renderer();
+  marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    pedantic: false, // allow error tolerance
+    sanitize: false, // don't remove anything
+    tables: true, // support Github table
+    breaks: false, // support Github line breaks
+    smartLists: true, // optimize list output
+    highlight: (code) => {
+      return hljs.highlightAuto(code).value;
+    }
+  });
+  
 
   if (error) return <h1>An error has occurred.</h1>;
   if (!data) return <h1>Loading...</h1>;
@@ -52,7 +69,7 @@ const Body: React.FC<ListBodyProps> = () => {
                 </div>
                 <div className="icon-list">
                   {icons.map((icon, index) => (
-                    <span className="icon-list__icon">
+                    <span className="icon-list__icon" key={index}>
                       <DynamicIcon type={icon[0]} style={icon[1]} />
                       <span>
                         {index === 0
@@ -64,7 +81,8 @@ const Body: React.FC<ListBodyProps> = () => {
                     </span>
                   ))}
                 </div>
-                <div className={styles.list__context}>{item.introduction}</div>
+                <div className={styles.list__context} 
+                  dangerouslySetInnerHTML={{__html: marked.parse(item.introduction)}}></div>
               </List.Item>
             )}
           />

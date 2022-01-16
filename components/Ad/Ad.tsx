@@ -15,6 +15,7 @@ const Ad: React.FC = () => (
         layout="responsive"
         objectFit="cover"
         alt="Asuka"
+        priority={true}
       />
     </div>
   </div>
