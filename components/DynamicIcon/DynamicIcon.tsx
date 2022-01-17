@@ -2,7 +2,7 @@ import React from 'react';
 import {
   HomeOutlined,
   ProfileOutlined,
-  SmileOutlined,
+  ContactsOutlined,
   CalendarOutlined,
   FolderOpenOutlined,
   FireOutlined
@@ -20,7 +20,7 @@ export default function DynamicIcon({ type, style }): React.ReactElement<Dynamic
     case 'ProfileOutlined':
       return <ProfileOutlined className={style && style} />;
     case 'SmileOutlined':
-      return <SmileOutlined className={style && style} />;
+      return <ContactsOutlined className={style && style} />;
     case 'CalendarOutlined':
       return <CalendarOutlined className={style && style} />;
     case 'FolderOpenOutlined':

@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = () => {
       });
     } else {
       Router.push({
-        pathname: '/life'
+        pathname: '/contact'
       });
     }
   };

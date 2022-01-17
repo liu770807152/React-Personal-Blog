@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fetcher from '../../../utils/fetcher';
-import path from '../../../utils/apiUrl';
+import path from '../../../config/apiUrl';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     return fetcher({
       method: 'GET',
-      url: path.articleList
+      url: path.articleList,
     }).then((data) => res.json(data));
   }
 }
