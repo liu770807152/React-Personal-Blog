@@ -14,7 +14,7 @@ const Header: React.FC = () => {
       });
     } else if (e.key === '2') {
       Router.push({
-        pathname: '/article'
+        pathname: '/blog'
       });
     } else {
       Router.push({
