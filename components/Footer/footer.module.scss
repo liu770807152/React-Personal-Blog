@@ -11,19 +11,22 @@
     margin: 15px;
     color: #888;
     letter-spacing: 2px;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     .logo {
-      width: 42px;
+      width: 45px;
       background-color: #fff;
       border-radius: 5px;
     }
+    &--left {
+      border-radius: 50%;
+      overflow: hidden;
+    }
     &--right {
-      background-color: #000;
+      margin-left: 10px;
       padding: 5px;
       border-radius: 3px;
-      transition: all 0.2s;
-      margin-left: 10px;
+      background-color: #000;
     }
   }
   &__icon-container {

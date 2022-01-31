@@ -2,7 +2,7 @@ import React from 'react';
 import {
   HomeOutlined,
   ProfileOutlined,
-  ContactsOutlined,
+  MailOutlined,
   CalendarOutlined,
   FolderOpenOutlined,
   FireOutlined
@@ -10,23 +10,23 @@ import {
 
 export interface DynamicIconProps {
   type: string,
-  style?: string
+  fontSize?: string
 }
 
-export default function DynamicIcon({ type, style }): React.ReactElement<DynamicIconProps> {
+export default function DynamicIcon({ type, fontSize }): React.ReactElement<DynamicIconProps> {
   switch (type) {
-    case 'HomeOutlined':
-      return <HomeOutlined className={style && style} />;
-    case 'ProfileOutlined':
-      return <ProfileOutlined className={style && style} />;
-    case 'SmileOutlined':
-      return <ContactsOutlined className={style && style} />;
-    case 'CalendarOutlined':
-      return <CalendarOutlined className={style && style} />;
-    case 'FolderOpenOutlined':
-      return <FolderOpenOutlined className={style && style} />;
-    case 'FireOutlined':
-      return <FireOutlined className={style && style} />;
+    case 'Home':
+      return <HomeOutlined style={{fontSize: fontSize && fontSize}} />;
+    case 'Blog':
+      return <ProfileOutlined style={{fontSize: fontSize && fontSize}} />;
+    case 'Contact':
+      return <MailOutlined style={{fontSize: fontSize && fontSize}} />;
+    case 'Calendar':
+      return <CalendarOutlined style={{fontSize: fontSize && fontSize}} />;
+    case 'Folder':
+      return <FolderOpenOutlined style={{fontSize: fontSize && fontSize}} />;
+    case 'Fire':
+      return <FireOutlined style={{fontSize: fontSize && fontSize}} />;
     default:
       return null;
   }

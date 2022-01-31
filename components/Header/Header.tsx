@@ -2,17 +2,11 @@ import React from 'react';
 import Router from 'next/router';
 import { Row, Col, Menu } from 'antd';
 import DynamicIcon from '../DynamicIcon/DynamicIcon';
+import headerData from '../../utils/headerData'
 import styles from './header.module.scss';
-import useSWR from 'swr';
-import { ICatalogList, ICatalogBase } from '../../interfaces/catalog';
+import { ICatalogBase } from '../../interfaces/catalog';
 
-export interface HeaderProps {
-  data: ICatalogList;
-}
-
-const Header: React.FC<HeaderProps> = () => {
-  const { data, error } = useSWR('/api/catalogList');
-
+const Header: React.FC = () => {
   const handleClick = (e) => {
     if (e.key === '1') {
       Router.push({
@@ -29,8 +23,6 @@ const Header: React.FC<HeaderProps> = () => {
     }
   };
 
-  if (error) return <h1>An error has occurred.</h1>;
-  if (!data) return <h1>Loading...</h1>;
   return (
     <div className={styles.header}>
       <Row type="flex" justify="center">
@@ -42,10 +34,10 @@ const Header: React.FC<HeaderProps> = () => {
         </Col>
         <Col xs={0} sm={0} md={14} lg={8} xl={6}>
           <Menu mode="horizontal" className={styles.menu} onClick={handleClick}>
-            {data.map((item: ICatalogBase) => (
+            {headerData.map((item) => (
               <Menu.Item key={item.id}>
                 <div className="flex items-center">
-                  <DynamicIcon type={item.icon} style="text-lg" />
+                  <DynamicIcon type={item.name} fontSize={'1.5rem'} />
                   <span className={styles['menu-item__text']}>{item.name}</span>
                 </div>
               </Menu.Item>
