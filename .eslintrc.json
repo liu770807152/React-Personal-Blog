@@ -1,23 +1,96 @@
 {
   "root": true,
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended", // 如果同时使用了eslint和prettier发生冲突了，会关闭掉与prettier有冲突的规则，也就是使用prettier认为对的规则
+    "next/core-web-vitals"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier" // eslint 会使用prettier的规则对代码格式化
+  ],
   "env": {
-    "es6": true,
-    "browser": true
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "semi": 1, // 行末分号，根据编码习惯选择添加，这里配置的加分号
+    "no-console": 0,
+    "comma-dangle": [0, "always-multiline"],
+    "max-len": 0,
+    "space-before-function-paren": [0,"always"],
+    "no-unused-expressions": [
+      0,
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "arrow-body-style": [0, "never"],
+    "func-names": 0,
+    "prefer-const": 0,
+    "no-extend-native": 0,
+    "no-param-reassign": 0,
+    "no-restricted-syntax": 0,
+    "no-eval": 0,
+    "no-continue": 0,
+    "no-unused-vars": [
+      0,
+      {
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-underscore-dangle": 0,
+    "global-require": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    // react
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-no-bind": 0,
+    "react/no-array-index-key": 0,
+    "react/require-default-props": 0,
+    "react/forbid-prop-types": 0,
+    "react/no-string-refs": 0,
+    "react/no-find-dom-node": 0,
+    "react/no-danger": 0,
+    "react/prop-types": 0,
+    "react/display-name": 0,
+    "react/no-deprecated": 0,
+    "react/no-direct-mutation-state": 0,
+    // allow jsx syntax in js files (for next.js project)
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"] //should add ".ts" if typescript project
+      }
+    ],
+    // suppress errors for missing 'import React' in files
+    "react/react-in-jsx-scope": "off", 
+    "react-hooks/rules-of-hooks": "error",   
+    "react-hooks/exhaustive-deps": "warn",
+    // 以上两行是精华，必须添加，使用钩子函数时才会提示警告
+    "jsx-a11y/href-no-hash": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+		"prettier/prettier": 0 // 这项配置 对于不符合prettier规范的写法，eslint会提示报错
   },
   "parserOptions": {
     // "parser": "babel-eslint",
     "parser": "@typescript-eslint/parser",  // 指定ESLint解析器
-    "ecmaVersion": 2018,
+    "ecmaVersion": 9,
     "sourceType": "module",
     "ecmaFeatures": {
-      // 添加ES特性支持，使之能够识别ES6语法
-      "jsx": true
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
     }
   },
   "settings":  {
     "react":  {
       "version": "detect",  // 告诉eslint-plugin-react自动检测要使用的React版本
+      "import/resolver": "node"
     }
   }
 }
