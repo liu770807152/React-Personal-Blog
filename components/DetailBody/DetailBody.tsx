@@ -14,8 +14,8 @@ import useSWR from 'swr';
 import { IArticleBase } from '../../interfaces/article';
 
 export interface DetailBodyProps {
-  id: number,
-  data: IArticleBase
+  id: number;
+  data: IArticleBase;
 }
 
 const DetailBody: React.FC<DetailBodyProps> = ({ id }) => {
@@ -28,7 +28,7 @@ const DetailBody: React.FC<DetailBodyProps> = ({ id }) => {
     ['FireOutlined', 'px-1', data.viewCount]
   ];
 
-  renderer.heading = function (text, level, raw) {
+  renderer.heading = function(text, level, raw) {
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor__fix"><h${level}>${text}</h${level}></a>\n`;
   };
@@ -46,8 +46,8 @@ const DetailBody: React.FC<DetailBodyProps> = ({ id }) => {
     }
   });
 
-  if (error) return <h1>An error has occurred.</h1>;
-  if (!data) return <h1>Loading...</h1>;
+  if (error) { return <h1>An error has occurred.</h1>; }
+  if (!data) { return <h1>Loading...</h1>; }
   return (
     <Row className="comm__main" type="flex" justify="center">
       <Col className="comm__left" xs={24} sm={24} md={16} lg={18} xl={14}>
@@ -78,7 +78,7 @@ const DetailBody: React.FC<DetailBodyProps> = ({ id }) => {
               dangerouslySetInnerHTML={{
                 __html: marked.parse(data.content) // transform to HTML
               }}
-            ></div>
+            />
           </div>
         </div>
       </Col>

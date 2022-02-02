@@ -10,7 +10,8 @@
   "jsRules": {
     "max-line-length": {
       "options": [100]
-    }
+    },
+    "jsx-no-lambda": false
   },
   "rules": {
     "adjacent-overload-signatures": true,
@@ -35,6 +36,7 @@
     "indent": [true, "spaces", 2],
     "interface-name": [true, "never-prefix"],
     "interface-over-type-literal": true,
+    "jsx-no-lambda": false,
     "label-position": true,
     "max-line-length": [true, 100],
     "member-access": false,
@@ -82,7 +84,7 @@
     "no-unnecessary-callback-wrapper": true,
     "no-unnecessary-initializer": true,
     "no-unnecessary-qualifier": true,
-    "no-unsafe-any": true,
+    "no-unsafe-any": false,
     "no-unsafe-finally": true,
     "no-unused-expression": true,
     "no-use-before-declare": true,
@@ -94,6 +96,7 @@
     "object-literal-sort-keys": false,
     "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
     "one-variable-per-declaration": true,
+    "only-arrow-functions": false,
     "ordered-imports": [
       false,
       {
