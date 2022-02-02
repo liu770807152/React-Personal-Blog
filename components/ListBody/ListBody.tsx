@@ -12,15 +12,16 @@ import useSWR from 'swr';
 import { IArticleList, IArticleBase } from '../../interfaces/article';
 
 export interface ListBodyProps {
-  data: IArticleList
+  data?: IArticleList;
 }
 
 const Body: React.FC<ListBodyProps> = () => {
+  // tslint:disable-next-line: typedef
   const { data, error } = useSWR('/api/articleList');
   const icons = [
-    ['CalendarOutlined', 'px-1'],
-    ['FolderOpenOutlined', 'px-1'],
-    ['FireOutlined', 'px-1']
+    ['Calendar', 'px-1'],
+    ['Folder', 'px-1'],
+    ['Fire', 'px-1']
   ];
   const renderer = new marked.Renderer();
   marked.setOptions({
@@ -35,10 +36,9 @@ const Body: React.FC<ListBodyProps> = () => {
       return hljs.highlightAuto(code).value;
     }
   });
-  
 
-  if (error) return <h1>An error has occurred.</h1>;
-  if (!data) return <h1>Loading...</h1>;
+  if (error) { return <h1>An error has occurred.</h1>; }
+  if (!data) { return <h1>Loading...</h1>; }
   return (
     <>
       <Row className="comm__main" type="flex" justify="center">
@@ -82,7 +82,7 @@ const Body: React.FC<ListBodyProps> = () => {
                   ))}
                 </div>
                 <div className={styles.list__context} 
-                  dangerouslySetInnerHTML={{__html: marked.parse(item.introduction)}}></div>
+                  dangerouslySetInnerHTML={{__html: marked.parse(item.introduction)}}/>
               </List.Item>
             )}
           />

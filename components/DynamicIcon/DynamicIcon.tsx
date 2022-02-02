@@ -3,6 +3,7 @@ import {
   HomeOutlined,
   ProfileOutlined,
   MailOutlined,
+  UserSwitchOutlined,
   CalendarOutlined,
   FolderOpenOutlined,
   FireOutlined
@@ -20,7 +21,9 @@ export default function DynamicIcon({ type, fontSize }): React.ReactElement<Dyna
     case 'Blog':
       return <ProfileOutlined style={{fontSize: fontSize && fontSize}} />;
     case 'Contact':
-      return <MailOutlined style={{fontSize: fontSize && fontSize}} />;
+      return <MailOutlined style={{ fontSize: fontSize && fontSize }} />;
+    case 'Login':
+      return <UserSwitchOutlined style={{ fontSize: fontSize && fontSize }} />;
     case 'Calendar':
       return <CalendarOutlined style={{fontSize: fontSize && fontSize}} />;
     case 'Folder':
