@@ -1,7 +1,7 @@
 const headerData = [
   {
     id: 1,
-    name: 'Home',
+    name: 'Portfolio',
   },
   {
     id: 2,
@@ -9,7 +9,7 @@ const headerData = [
   },
   {
     id: 3,
-    name: 'Contact',
+    name: 'Hire Me',
   },
 ];
 
