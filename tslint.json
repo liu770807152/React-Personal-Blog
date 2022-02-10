@@ -1,12 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended",
-    "tslint:latest",
-    "tslint-config-prettier",
-    "tslint-eslint-rules",
-    "tslint-react"
-  ],
+  "extends": ["tslint-config-airbnb", "tslint-react-hooks"],
   "jsRules": {
     "max-line-length": {
       "options": [100]
@@ -14,6 +8,7 @@
     "jsx-no-lambda": false
   },
   "rules": {
+    "react-hooks-nesting": true,
     "adjacent-overload-signatures": true,
     "arrow-return-shorthand": true,
     "await-promise": true,
