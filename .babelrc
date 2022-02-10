@@ -8,6 +8,16 @@
 			{
 				"libraryName":"antd"
 			}
-		]
+		],
+		// 可以使用装饰器decorator
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+		[
+      "module-resolver",
+      {
+        "alias": {
+					"@": "./"
+				}
+      }
+    ]
 	]
 }
