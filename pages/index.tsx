@@ -3,9 +3,9 @@ import Meta from '../components/Meta/Meta';
 // import { SWRConfig } from 'swr';
 
 const Home: React.FC = () => (
-  <>
-    <Meta />
-  </>
+	<>
+		<Meta />
+	</>
 );
 
 export default Home;
