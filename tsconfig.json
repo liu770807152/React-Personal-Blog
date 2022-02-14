@@ -85,6 +85,7 @@
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     "paths": {
+      "@redux/*": ["redux/*"],
       "@components/*": ["components/*"],
       "@api/*": ["pages/api/*"],
       // "@models/*": ["./src/models/*"],
@@ -93,7 +94,6 @@
       // "@services/*": ["./src/services/*"],
       // "@constants": ["./src/constants.ts"],
       // "@context/*": ["./src/context/*"],
-      // "@queries/*": ["./src/queries/*"],
       // "@data/*": ["./src/data/*"],
       // "@typeDefs/*": ["./src/types/*"],
       // "@generated/*": ["./src/generated/*"],
